@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
@@ -99,6 +100,7 @@ public:
     }
 };
 
+bool isValid(string s);
 
 int main(int argc, char const *argv[])
 {
@@ -110,3 +112,24 @@ int main(int argc, char const *argv[])
     cout << stack->top() << endl;
     return 0;
 }
+
+
+bool isValid(string s) {
+        stack<char> stac;
+
+        for(char i : s) {
+            if (i == '(' || i == '[' || i == '{') {
+                stac.push(i);
+            } else if (stac.empty()) {
+                return false;
+            } else if ((stac.top() == '(' && i == ')') || 
+            (stac.top() == '[' && i == ']') || 
+            (stac.top() == '{' && i == '}')) {
+                stac.pop();
+            } else {
+                return false;
+            }
+        }
+
+        return stac.empty();
+    }
