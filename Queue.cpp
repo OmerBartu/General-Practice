@@ -21,6 +21,36 @@ class Queue {
         head->next = nullptr;
     }
 
+    void pop() {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+    }
+
+
+
+    void push (int val) {
+        if (this->isEmpty())
+        {
+            this->head = new Node;
+        head->val = val;
+        this->tail = this->head;
+        head->next = nullptr;
+        }
+
+        Node *temp = new Node;
+        temp->val = val;
+        temp->next = nullptr;
+
+        tail->next = temp;
+        tail = tail->next;
+        
+    }
+
+    bool isEmpty() {
+        return (head == nullptr);
+    }
+
     private:
 
     Node *head;
