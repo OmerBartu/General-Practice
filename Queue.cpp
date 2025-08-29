@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 
 struct Node
 {
@@ -25,10 +27,13 @@ class Queue {
         return head->val;
     }
 
-    void pop() {
+    int pop() {
         Node *temp = head;
         head = head->next;
+
+        int deleted = temp->val;
         delete temp;
+        return deleted;
     }
 
 
@@ -64,6 +69,25 @@ class Queue {
 int main(int argc, char const *argv[])
 {
 
+    Queue q;  
+
+    cout << boolalpha; 
+
+    cout << "Initially empty? " << q.isEmpty() << endl;
+
+    q.push(10);
+    q.push(20);
+    q.push(30);
+
+    cout << "Next value: " << q.nextVal() << endl; 
+    cout << "Popping: " << q.pop() << endl;
+    cout << "Next value: " << q.nextVal() << endl; 
+    cout << "Is empty? " << q.isEmpty() << endl;
+
+    q.pop();
+    q.pop();
+
+    cout << "Empty after popping all? " << q.isEmpty() << endl;
     
     return 0;
 }
