@@ -21,12 +21,15 @@ class Queue {
         head->next = nullptr;
     }
 
+    int nextVal () {
+        return head->val;
+    }
+
     void pop() {
         Node *temp = head;
         head = head->next;
         delete temp;
     }
-
 
 
     void push (int val) {
