@@ -8,11 +8,13 @@ LinkedList::LinkedList() {
 }
 
 LinkedList::~LinkedList() {
+    // If empty return
     if (head == nullptr)
     {
         return;
     }
 
+    // delete until empty
     while (head != nullptr)
     {
         SingleNode *prev = head;
